@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Suspense, useEffect, useRef, useState } from "react";
 import s from "./MovieDetailsPage.module.css";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import { getFullDataMovie } from "../../services/api.js";
+import { getFullDataMovie } from "../../services/api";
 import Loader from "../../components/Loader/Loader";
 
 const MovieDetailsPage = () => {

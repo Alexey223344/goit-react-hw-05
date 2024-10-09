@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMoviesData } from "../../services/api.js";
+import { getMoviesData } from "../../services/api";
 import Loader from "../../components/Loader/Loader";
 import MovieList from "../../components/MovieList/MovieList";
 
