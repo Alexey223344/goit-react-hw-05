@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import MovieList from "../../components/MovieList/MovieList";
-import { getSearchMovie } from "../../services/api";
+import { getSerchMovie } from "../../services/api";
 import { Field, Formik, Form } from "formik";
 import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-  const [searchMovie, setSearchMovie] = useState();
+  const [searchMovie, setSerchMovie] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
   const initialValues = { query: "" };
@@ -21,8 +21,8 @@ const MoviesPage = () => {
       if (!query) {
         return;
       }
-      const data = await getSearchMovie(query.toLocaleLowerCase());
-      setSearchMovie(data);
+      const data = await getSerchMovie(query.toLocaleLowerCase());
+      setSerchMovie(data);
     };
     getData();
   }, [query]);
