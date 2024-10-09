@@ -5,16 +5,17 @@ import { Field, Formik, Form } from "formik";
 import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-  const [searchMovie, setSearchMovie] = useState();
+  const [searchMovie, setSearchMovie] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
   const initialValues = { query: "" };
+
   const handleSubmit = (values) => {
     if (!values.query) {
       return setSearchParams({});
     }
-    searchParams.set("query", values.query);
-    setSearchParams(searchParams);
+
+    setSearchParams({query: values.query});
   };
   useEffect(() => {
     const getData = async () => {
@@ -31,12 +32,12 @@ const MoviesPage = () => {
       <div>
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form>
-            <Field name={query} placeholder="Enter movie" />
+            <Field name='query' placeholder="Enter movie" />
             <button type="submit">Search Movie</button>
           </Form>
         </Formik>
       </div>
-      {searchMovie && <MovieList movieData={searchMovie} />}
+      {searchMovie.length>0 && <MovieList movieData={searchMovie} />}
     </div>
   );
 };
