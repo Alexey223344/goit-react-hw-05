@@ -17,7 +17,7 @@ export const getMoviesData = async () => {
     return data.results;
   };
   
-  export const getSerchMovie = async query => {
+  export const getSearchMovie = async query => {
     console.log(query);
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
